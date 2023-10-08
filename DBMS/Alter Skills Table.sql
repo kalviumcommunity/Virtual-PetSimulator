@@ -1,0 +1,1 @@
+ALTER TABLE Skills ADD DateAdded DATE;
