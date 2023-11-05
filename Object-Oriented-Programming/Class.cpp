@@ -260,7 +260,6 @@ int main() {
         pet->performSpecialAction();
     }
 
-    // Display total number of pets
     std::cout << "Total number of pets: " << Pet::getTotalPets() << std::endl;
 
     // Pets are automatically deleted when the vector goes out of scope
