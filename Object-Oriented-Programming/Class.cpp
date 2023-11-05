@@ -64,16 +64,14 @@ public:
     void setHungerLevel(int h) { hungerLevel = h; }
     void setHappinessLevel(int hl) { happinessLevel = hl; }
 
-    // Method to feed the pet
+   
     void feed(const Food &foodItem);
 
-    // Method to teach the pet a skill
+
     void teachSkill(const Skill &skillItem);
 
-    // Method for the pet to engage in an activity
     void doActivity(const Activity &activityItem);
 
-        // Static method to get total number of pets
     static int getTotalPets() {
         return totalPets;
     }
@@ -133,7 +131,7 @@ public:
     void setNutritionValue(int nValue) { nutritionValue = nValue; }
 };
 
-// Implement the feed method for Pet after Food class definition
+
 void Pet::feed(const Food &foodItem)
 {
     this->hungerLevel += foodItem.getNutritionValue();
