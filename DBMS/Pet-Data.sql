@@ -1,0 +1,16 @@
+INSERT INTO Pet (Name, Type, Age, UserID, Description) VALUES 
+('Galactic', 'Dragon', 10, 1, 'The black dragon of the legends ruling over the shadow energy'),
+('Aurelia', 'Phoenix', 2, 1, 'A vibrant bird that can be reborn from its ashes.'),
+('Lunar', 'Unicorn', 3, 1, 'A graceful horse-like creature with a single, spiraled horn.'),
+('Talos', 'Golem', 4, 1, 'A giant animated statue, often made of stone or metal.'),
+('Nerida', 'Mermaid', 5, 1, 'A mystical sea creature with the upper body of a human and the tail of a fish.'),
+('Fenrir', 'Werewolf', 2, 1, 'A human with the ability to transform into a wolf during the full moon.'),
+('Sylph', 'Fairy', 1, 1, 'A tiny, ethereal creature with wings, often associated with nature.'),
+('Myst', 'Griffin', 3, 1, 'A majestic creature with the body of a lion and the head and wings of an eagle.'),
+('Oberon', 'Elf', 4, 1, 'A tall, slender humanoid known for its beauty and magical abilities.'),
+('Chimera', 'Chimera', 3, 1, 'A creature with the body of a lion, a goat head protruding from its back, and a serpent tail.'),
+('Basil', 'Basilisk', 2, 1, 'A serpent or dragon with the reputed ability to kill with its gaze or breath.'),
+('Kraken', 'Kraken', 5, 1, 'A legendary sea monster of giant proportions that dwells off the coasts.'),
+('Morpheus', 'Minotaur', 4, 1, 'A creature with the head of a bull and the body of a man, often associated with labyrinths.'),
+('Pandora', 'Harpy', 3, 1, 'A creature with the body of a bird and the head of a woman, known for stealing food.'),
+('Cerberus', 'Hellhound', 2, 1, 'A multi-headed dog that guards the gates of the Underworld.');
