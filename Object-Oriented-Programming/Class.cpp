@@ -1,8 +1,8 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <memory> // For smart pointers
 
-// Forward Declaration
-class Food;
+class Food; // Forward Declaration
 class Skill;
 class Activity;
 
@@ -44,6 +44,8 @@ public:
         std::cout << "-----------------------------------" << std::endl;
     }
 
+     virtual void performSpecialAction() = 0;
+
     // Getter methods for Pet
     std::string getName() const { return name; }
     std::string getType() const { return type; }
@@ -79,6 +81,34 @@ public:
     
 };
 int Pet::totalPets = 0;
+
+// Derived classes for different Pet types
+class Dragon : public Pet {
+public:
+    using Pet::Pet; // Inherit constructors
+
+    void performSpecialAction() override {
+        std::cout << getName() << " breathes fire!" << std::endl;
+    }
+};
+
+class Dog : public Pet {
+public:
+    using Pet::Pet; // Inherit constructors
+
+    void performSpecialAction() override {
+        std::cout << getName() << " wags its tail happily!" << std::endl;
+    }
+};
+
+class Cat : public Pet {
+public:
+    using Pet::Pet; // Inherit constructors
+
+    void performSpecialAction() override {
+        std::cout << getName() << " purrs softly!" << std::endl;
+    }
+};
 
 // Food class definition
 class Food
@@ -198,38 +228,43 @@ void Pet::doActivity(const Activity &activityItem)
     std::cout << name << " did the activity: " << activityItem.getActivityName() << " and its happiness level is now " << happinessLevel << std::endl;
 }
 
-int main()
-{
-    // Create instances of each class and demonstrate their usage
-    // Pet myPet("Fluffy", "Dragon", 5, 1, "A cute little dragon.", 50, 80);
-    Pet pets[3] = {
-        Pet("Fluffy", "Dragon", 5, 1, "A cute little dragon.", 50, 80),
-        Pet("Buddy", "Dog", 3, 2, "A playful dog.", 40, 90),
-        Pet("Whiskers", "Cat", 2, 3, "A lazy cat.", 30, 70)
-    };
-    User myUser(1, "JohnDoe", "john.doe@example.com", "password123", "2023-09-25");
+int main() {
+    // Using a vector of unique_ptr for automatic memory management
+    std::vector<std::unique_ptr<Pet>> pets;
+
+    // Dynamically creating Pet instances
+    pets.push_back(std::make_unique<Dragon>("Fluffy", "Dragon", 5, 1, "A cute little dragon.", 50, 80));
+    pets.push_back(std::make_unique<Dog>("Buddy", "Dog", 3, 2, "A playful dog.", 40, 90));
+    pets.push_back(std::make_unique<Cat>("Whiskers", "Cat", 2, 3, "A lazy cat.", 30, 70));
+
+    // Create other objects needed for operations
     Food dragonFood(1, "Dragon Fruit", 100);
     Skill flyingSkill(1, "Flying", "Ability to fly.");
     Activity playActivity(1, "Play", "Play with the pet.");
 
-    // std::cout << "Pet Name: " << myPet.getName() << std::endl;
-    // std::cout << "User Name: " << myUser.getUsername() << std::endl;
-    // std::cout << "Date Joined: " << myUser.getDateJoined() << std::endl;
+    // Feed the pets
+    for (auto& pet : pets) {
+        pet->feed(dragonFood);
+    }
+
+    // Teach skills to the pets
+    for (auto& pet : pets) {
+        pet->teachSkill(flyingSkill);
+    }
+
+    // Have the pets engage in activities
+    for (auto& pet : pets) {
+        pet->doActivity(playActivity);
+    }
+
+    // Perform special actions for each pet
+    for (auto& pet : pets) {
+        pet->performSpecialAction();
+    }
 
     // Display total number of pets
     std::cout << "Total number of pets: " << Pet::getTotalPets() << std::endl;
 
-    // Feed the pet and display the food details
-    // std::cout << "\nFeeding " << myPet.getName() << " with " << dragonFood.getFoodName() << " which has a nutritional value of " << dragonFood.getNutritionValue() << "." << std::endl;
-    // myPet.feed(dragonFood);
-
-    // Teach the pet a skill and display the skill details
-    // std::cout << "\nTeaching " << myPet.getName() << " the skill: " << flyingSkill.getSkillName() << " - " << flyingSkill.getSkillDescription() << "." << std::endl;
-    // myPet.teachSkill(flyingSkill);
-
-    // Have the pet engage in an activity and display the activity details
-    // std::cout << "\nHaving " << myPet.getName() << " engage in the activity: " << playActivity.getActivityName() << "." << std::endl;
-    // myPet.doActivity(playActivity);
-
+    // Pets are automatically deleted when the vector goes out of scope
     return 0;
 }
