@@ -1,4 +1,4 @@
--- Query to display pet name, skill's name, and the date the skill was learned
+
 SELECT 
     P.Name AS PetName, 
     S.SkillName, 
