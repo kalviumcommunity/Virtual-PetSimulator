@@ -1,0 +1,3 @@
+SELECT Name, Age
+FROM Pet
+WHERE Age > (SELECT AVG(Age) FROM Pet);
