@@ -24,7 +24,7 @@ public:
     Pet(std::string n, std::string t, int a, int u, std::string d, int h, int hl) : name(n), type(t), age(a), userID(u), description(d), hungerLevel(h), happinessLevel(hl) {
     totalPets++;
       displayPetDetails();  // Display pet details when a pet is created
-}
+} 
     // Destructor for Pet
     ~Pet()
     {
